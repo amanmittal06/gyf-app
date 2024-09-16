@@ -13,8 +13,8 @@
     
     "rewrites": [
         {
-          "source": "/(.*)",
-          "destination": "/"
+          "source": "/(.+)",
+          "destination": "build/$1"
         }
     ],
   
