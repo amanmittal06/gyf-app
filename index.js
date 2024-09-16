@@ -2,12 +2,12 @@ const express = require('express')
 const server = express();
 const fs = require('fs')
 const mongoose = require('mongoose');
+const path = require('path')
 const { Schema } = mongoose;
 const productRouter = require('./routes/product')
 const userRouter = require('./routes/user')
-const cors = require('cors');
 require('dotenv').config().parsed;
-const path = require('path')
+const cors = require('cors');
 
 main().catch(err => console.log(err));
 
