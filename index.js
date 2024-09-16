@@ -9,7 +9,6 @@ const cors = require('cors');
 require('dotenv').config().parsed;
 const path = require('path')
 
-
 main().catch(err => console.log(err));
 
 async function main() {
@@ -24,6 +23,7 @@ async function main() {
 
 server.use(cors());
 server.use(express.json());
+server.use(express.static(path.resolve(__dirname, process.env.PUBLIC_DIR)))
 server.use('/products' , productRouter.router);
 server.use('/users' , userRouter.router);
 server.use('*', (req,res)=>{

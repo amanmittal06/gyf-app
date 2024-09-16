@@ -10,6 +10,7 @@
         "use": "@vercel/static"
       }
     ],
+    
     "routes": [
       {
        
@@ -41,5 +42,9 @@
         "dest": "build/$1"
       }
 
+
     ]
+
+    
   }
+  
