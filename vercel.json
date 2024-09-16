@@ -45,7 +45,7 @@
       
     ],
 
-    "rewrites": [{ "source": "/(.+)", "destination": "build/$1" }]
+    "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 
     
   }
