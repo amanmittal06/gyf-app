@@ -1,57 +1,39 @@
 {
-    "version":2,
-    "builds": [
-      {
-        "src": "index.js",
-        "use": "@vercel/node"
-      },
-      {
-        "src": "build/**",
-        "use": "@vercel/static"
-      }
-    ],
-    
-    "rewrites": [
-        {
-          "source": "/(.+)",
-          "destination": "build/$1"
-        }
-    ],
-  
-    "routes": [
-      {
-       
-        "src": "/users/",
-        "dest": "index.js"
-      },
-      {
-       
-        "src": "/users/(.*)",
-        "dest": "index.js"
-      },
-      {
-       
-        "src": "/products",
-        "dest": "index.js"
-      },
-      {
-       
-        "src": "/products/(.*)",
-        "dest": "index.js"
-      },
-      {
-        "src": "/",
-        "dest": "build/index.html"
-      },
-      {
-       
-        "src": "/(.+)",
-        "dest": "build/$1"
-      }
-
-
-    ]
-
-    
-  }
-  
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "build/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/users",
+      "dest": "index.js"
+    },
+    {
+      "src": "/products",
+      "dest": "index.js"
+    },
+    {
+      "src": "/users/(.*)",
+      "dest": "index.js"
+    },
+    {
+      "src": "/products/(.*)",
+      "dest": "index.js"
+    },
+    {
+      "src": "/",
+      "dest": "build/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "build/index.html"
+    }
+  ]
+}
