@@ -43,19 +43,18 @@
       },
       {
        
+        "src": "/newsletter",
+        "dest": "build/$1"
+      },
+      {
+       
         "src": "/(.+)",
         "dest": "build/$1"
       }
 
       
-    ],
+    ]
 
-    "rewrites": [{
-       
-      "src": "/(.+)",
-      "dest": "build/$1"
-    }]
-   
     
   }
   
