@@ -45,7 +45,11 @@
       
     ],
 
-    "rewrites": [{ "source": "/(.*)", "destination": "build/index.html" }]
+    "rewrites": [{
+       
+      "src": "/(.+)",
+      "dest": "build/$1"
+    }]
    
     
   }
