@@ -12,21 +12,6 @@ const cors = require('cors');
 const Razorpay = require('razorpay')
 
 
-const allowedOrigins = [
-  'http://localhost:5173', 
-  'https://gyf.org.in', 
-  'https://goudiyayouthforum.vercel.app' 
-];
-
-
-const corsOptions = {
-  origin: 'http://localhost:5173',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
-  credentials: true ,
-  allowedHeaders: ['Content-Type', 'Authorization'],
-};
-
-server.options('*', cors(corsOptions));
 
 main().catch(err => console.log(err));
 
@@ -46,7 +31,7 @@ exports.instance = new Razorpay({
 
 });
 
-server.use(cors(corsOptions));
+server.use(cors());
 server.use(express.json());
 server.use('/products' , productRouter.router);
 server.use('/users' , userRouter.router);
