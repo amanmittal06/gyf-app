@@ -31,7 +31,12 @@ exports.instance = new Razorpay({
 
 });
 
-server.use(cors());
+const corsOptions = {
+  origin: ['http://localhost:5173', 'https://gyf.org.in', 'https://goudiyayouthforum.vercel.app'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  credentials: true, 
+};
+server.use(cors(corsOptions));
 server.use(express.json());
 server.use('/products' , productRouter.router);
 server.use('/users' , userRouter.router);
