@@ -25,7 +25,7 @@ async function main() {
   }
 }
 
-exports.instance = new Razorpay({
+const instance = new Razorpay({
   key_id : process.env.RAZORPAY_API_KEY,
   key_secret: process.env.RAZORPAY_API_SECRET
 
@@ -37,6 +37,7 @@ const corsOptions = {
   credentials: true, 
 };
 server.use(cors(corsOptions));
+server.options('*', cors(corsOptions));
 server.use(express.json());
 server.use('/products' , productRouter.router);
 server.use('/users' , userRouter.router);
@@ -47,4 +48,6 @@ server.listen(process.env.PORT , ()=>{
     console.log('server started');
 })
 
+module.exports = server; 
+module.exports.razorpayInstance = instance;
 

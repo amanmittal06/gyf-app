@@ -1,5 +1,5 @@
-const Instance = require('../index.js')
 const crypto = require('crypto');
+const Instance = require('../index.js')
 
 exports.checkout = async (req, res)=>{
     const amount = req.body.amount;
@@ -7,7 +7,7 @@ exports.checkout = async (req, res)=>{
         amount: amount*100,
         currency: "INR",
     }
-    const order = await Instance.instance.orders.create(options);
+    const order = await Instance.razorpayInstance.orders.create(options);
 
     res.status(200).json({
         success: true,
