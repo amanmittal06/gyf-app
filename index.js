@@ -48,7 +48,5 @@ server.listen(process.env.PORT , ()=>{
     console.log('server started');
 })
 
-module.exports = {
-  server,
-  getRazorpayInstance
-};
+module.exports = server
+module.exports.getRazorpayInstance = getRazorpayInstance
