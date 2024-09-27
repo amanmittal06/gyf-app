@@ -11,25 +11,25 @@ require('dotenv').config().parsed;
 const cors = require('cors');
 const Razorpay = require('razorpay')
 
-
+let razorpayInstance;
 
 main().catch(err => console.log(err));
 
 async function main() {
   try{
     await mongoose.connect(process.env.MONGO_URL);
-    console.log('connected with database')
+    console.log('connected with database');
+    razorpayInstance = new Razorpay({
+      key_id : process.env.RAZORPAY_API_KEY,
+      key_secret: process.env.RAZORPAY_API_SECRET
+    });
   }
   catch(err){
     console.log(err);
   }
 }
 
-const instance = new Razorpay({
-  key_id : process.env.RAZORPAY_API_KEY,
-  key_secret: process.env.RAZORPAY_API_SECRET
-
-});
+const getRazorpayInstance = () => razorpayInstance;
 
 const corsOptions = {
   origin: ['http://localhost:5173', 'https://gyf.org.in', 'https://goudiyayouthforum.vercel.app'],
@@ -48,6 +48,7 @@ server.listen(process.env.PORT , ()=>{
     console.log('server started');
 })
 
-module.exports = server; 
-module.exports.razorpayInstance = instance;
-
+module.exports = {
+  server,
+  getRazorpayInstance
+};

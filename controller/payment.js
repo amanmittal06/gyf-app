@@ -1,13 +1,16 @@
+const importedModule  = require('../index.js');
 const crypto = require('crypto');
-const Instance = require('../index.js')
+
+
 
 exports.checkout = async (req, res)=>{
+    const instance = importedModule.getRazorpayInstance();
     const amount = req.body.amount;
     const options ={
         amount: amount*100,
         currency: "INR",
     }
-    const order = await Instance.razorpayInstance.orders.create(options);
+    const order = await instance.orders.create(options);
 
     res.status(200).json({
         success: true,
@@ -50,7 +53,6 @@ exports.paymentverification = async (req, res)=>{
 //       success: false,
 //     });
 //   }
-    
     res.status(200).json({
         success:true,
     });
