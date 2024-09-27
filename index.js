@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const productRouter = require('./routes/product')
 const userRouter = require('./routes/user')
+const orderRouter = require('./routes/order')
 require('dotenv').config().parsed;
 const cors = require('cors');
 
@@ -24,6 +25,7 @@ server.use(cors());
 server.use(express.json());
 server.use('/products' , productRouter.router);
 server.use('/users' , userRouter.router);
+server.use('/orders' , orderRouter.router);
 
 server.listen(process.env.PORT , ()=>{
     console.log('server started');
