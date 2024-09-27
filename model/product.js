@@ -7,6 +7,7 @@ const productSchema = new Schema({
     image: String,
     price: Number,
     stock: Number,
+    sizes: Array,
     quantity: {type: Number, default: 0},
 });
 
