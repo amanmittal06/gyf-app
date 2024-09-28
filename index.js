@@ -33,6 +33,7 @@ const corsOptions = {
 server.use(cors(corsOptions));
 server.options('*', cors(corsOptions));
 server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
 server.use('/products' , productRouter.router);
 server.use('/users' , userRouter.router);
 server.use('/orders' , orderRouter.router);
