@@ -46,22 +46,20 @@ exports.paymentverification = async (req, res)=>{
     // Database comes here
 
     const newOrder = new Order(currOrder);
-    order.save()
+    newOrder.save()
      .then(() => {
-        res.status(201).json(currOrder);
+        res.status(201).json({
+            orderId: razorpay_order_id,
+            paymentId: razorpay_payment_id,
+            es: expectedSignature,
+            rs: razorpay_signature,
+            success: false,
+        });
         console.log('Order saved');
       })
      .catch((err) => {
         res.status(400);
         console.error(err);
-      });
-
-    res.status(200).json({
-        orderId: razorpay_order_id,
-        paymentId: razorpay_payment_id,
-        es: expectedSignature,
-        rs: razorpay_signature,
-        success: true,
       });
     } 
     else 
