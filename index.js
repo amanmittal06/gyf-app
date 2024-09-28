@@ -26,7 +26,7 @@ async function main() {
 }
 
 const corsOptions = {
-  origin: 'https://gyf.org.in',
+  origin: ['http://localhost:5173', 'https://www.gyf.org.in', 'https://wwww.goudiyayouthforum.vercel.app'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   credentials: true, 
 };
