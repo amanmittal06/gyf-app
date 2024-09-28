@@ -31,7 +31,6 @@ exports.checkout = async (req, res)=>{
 
 exports.paymentverification = async (req, res)=>{
 
-  console.log(req.body);  
   const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
 
   const body = `${razorpay_order_id}|${razorpay_payment_id}`;
@@ -49,17 +48,13 @@ exports.paymentverification = async (req, res)=>{
     const newOrder = new Order(currOrder);
     newOrder.save()
      .then(() => {
-        res.status(201).json({
-            orderId: razorpay_order_id,
-            paymentId: razorpay_payment_id,
-            es: expectedSignature,
-            rs: razorpay_signature,
-            success: true,
-        });
-        console.log('Order saved');
+        res.redirect('https://www.gyf.org.in/store');
       })
      .catch((err) => {
-        res.status(400);
+        res.status(400).json({
+            paymentSuccess:true,
+            orderSuccess:false,
+        });
         console.error(err);
       });
     } 
