@@ -9,7 +9,7 @@ const createRazorpayInstance = () =>{
         key_secret: process.env.RAZORPAY_API_SECRET
     });
 
-    console.log('instance created successfully', razorpayInstance);
+    
 }
 
 const getRazorpayInstance = () => razorpayInstance;
