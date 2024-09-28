@@ -11,6 +11,7 @@ exports.checkout = async (req, res)=>{
     try{
         const instance = await razorpayInstance.getRazorpayInstance();
         const amount = currOrder.amount;
+
         const options ={
         amount: amount*100,
         currency: "INR",
@@ -53,7 +54,7 @@ exports.paymentverification = async (req, res)=>{
             paymentId: razorpay_payment_id,
             es: expectedSignature,
             rs: razorpay_signature,
-            success: false,
+            success: true,
         });
         console.log('Order saved');
       })
