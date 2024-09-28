@@ -1,10 +1,10 @@
-const importedModule  = require('../index.js');
+const razorpayInstance  = require('../razorpayinstance');
 const crypto = require('crypto');
 
 
 
 exports.checkout = async (req, res)=>{
-    const instance = importedModule.getRazorpayInstance();
+    const instance = razorpayInstance.getRazorpayInstance();
     const amount = req.body.amount;
     const options ={
         amount: amount*100,

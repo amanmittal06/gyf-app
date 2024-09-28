@@ -7,11 +7,10 @@ const productRouter = require('./routes/product')
 const userRouter = require('./routes/user')
 const orderRouter = require('./routes/order')
 const paymentRouter = require('./routes/payment')
+const razorpayInstance  = require('./razorpayinstance')
 require('dotenv').config().parsed;
 const cors = require('cors');
-const Razorpay = require('razorpay')
 
-let razorpayInstance;
 
 main().catch(err => console.log(err));
 
@@ -19,17 +18,12 @@ async function main() {
   try{
     await mongoose.connect(process.env.MONGO_URL);
     console.log('connected with database');
-    razorpayInstance = new Razorpay({
-      key_id : process.env.RAZORPAY_API_KEY,
-      key_secret: process.env.RAZORPAY_API_SECRET
-    });
+    razorpayInstance.createRazorpayInstance();
   }
   catch(err){
     console.log(err);
   }
 }
-
-const getRazorpayInstance = () => razorpayInstance;
 
 const corsOptions = {
   origin: ['http://localhost:5173', 'https://gyf.org.in', 'https://goudiyayouthforum.vercel.app'],
@@ -49,4 +43,3 @@ server.listen(process.env.PORT , ()=>{
 })
 
 module.exports = server
-module.exports.getRazorpayInstance = getRazorpayInstance
