@@ -1,12 +1,16 @@
 const razorpayInstance  = require('../razorpayinstance');
 const crypto = require('crypto');
+const model  = require('../model/order')
+const Order = model.Order;
 
 
+let order;
 
 exports.checkout = async (req, res)=>{
+    order = req.body;
     try{
         const instance = await razorpayInstance.getRazorpayInstance();
-        const amount = req.body.amount;
+        const amount = order.amount;
         const options ={
         amount: amount*100,
         currency: "INR",
@@ -21,17 +25,13 @@ exports.checkout = async (req, res)=>{
     catch(err){
         console.log
     }
-    
 
-    
 }
 
 exports.paymentverification = async (req, res)=>{
 
-  
   console.log(req.body);  
   const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
-
 
   const body = `${razorpay_order_id}|${razorpay_payment_id}`;
 
@@ -45,11 +45,16 @@ exports.paymentverification = async (req, res)=>{
   if (isAuthentic) {
     // Database comes here
 
-    // await Payment.create({
-    //   razorpay_order_id,
-    //   razorpay_payment_id,
-    //   razorpay_signature,
-    // });
+    const newOrder = new Order(order);
+    order.save()
+     .then(() => {
+        res.status(201).json(order);
+        console.log('Order saved');
+      })
+     .catch((err) => {
+        res.status(400);
+        console.error(err);
+    });
 
     res.status(200).json({
         orderId: razorpay_order_id,

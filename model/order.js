@@ -14,7 +14,8 @@ const itemSchema = new Schema({
 
 const orderSchema = new Schema({
   name: String,
-  items: [itemSchema]
+  items: [itemSchema],
+  amount: Number
 });
 
 exports.Order  = mongoose.model('Order' , orderSchema);
