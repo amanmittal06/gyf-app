@@ -4,13 +4,13 @@ const model  = require('../model/order')
 const Order = model.Order;
 
 
-let order;
+let currOrder;
 
 exports.checkout = async (req, res)=>{
-    order = req.body;
+    currOrder = req.body;
     try{
         const instance = await razorpayInstance.getRazorpayInstance();
-        const amount = order.amount;
+        const amount = currOrder.amount;
         const options ={
         amount: amount*100,
         currency: "INR",
@@ -45,16 +45,16 @@ exports.paymentverification = async (req, res)=>{
   if (isAuthentic) {
     // Database comes here
 
-    const newOrder = new Order(order);
+    const newOrder = new Order(currOrder);
     order.save()
      .then(() => {
-        res.status(201).json(order);
+        res.status(201).json(currOrder);
         console.log('Order saved');
       })
      .catch((err) => {
         res.status(400);
         console.error(err);
-    });
+      });
 
     res.status(200).json({
         orderId: razorpay_order_id,
