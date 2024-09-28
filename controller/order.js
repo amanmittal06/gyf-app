@@ -15,15 +15,13 @@ exports.createOrder  = (req,res) =>{
 }
 
 exports.getAllOrders = async (req,res) => {
-
     const orders = await Order.find({});
     res.json(orders);
-
 }
 
-exports.getOrder = async (req, res) => {
-    const id = req.params.id;
-    const order = await Order.findById(id);
+exports.getOrders = async (req, res) => {
+    const email = req.params.email;
+    const order = await Order.find({email:email});
     res.json(order);
 }
 

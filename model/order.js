@@ -15,7 +15,8 @@ const itemSchema = new Schema({
 const orderSchema = new Schema({
   name: String,
   items: [itemSchema],
-  amount: Number
+  amount: Number,
+  delivered: {type:Boolean, default:false}
 });
 
 exports.Order  = mongoose.model('Order' , orderSchema);
