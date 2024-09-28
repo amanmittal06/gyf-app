@@ -30,7 +30,7 @@ exports.paymentverification = async (req, res)=>{
     
   const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
 
-  const body = razorpay_order_id + "|" + razorpay_payment_id;
+  const body = `${razorpay_order_id}|${razorpay_payment_id}`;
 
   const expectedSignature = crypto
     .createHmac("sha256", process.env.RAZORPAY_API_SECRET)
@@ -48,12 +48,22 @@ exports.paymentverification = async (req, res)=>{
     //   razorpay_signature,
     // });
 
-    res.redirect(
-      `http://localhost:5173/store`
-    );
-    } else {
+    resres.status(200).json({
+        orderId: razorpay_order_id,
+        paymentId: razorpay_payment_id,
+        es: expectedSignature,
+        rs: razorpay_signature,
+        success: true,
+      });
+    } 
+    else 
+    {
     res.status(400).json({
+      orderId: razorpay_order_id,
+      paymentId: razorpay_payment_id,
+      es: expectedSignature,
+      rs: razorpay_signature,
       success: false,
     });
-  }
+    }
 }
