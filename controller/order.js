@@ -20,8 +20,8 @@ exports.getAllOrders = async (req,res) => {
 }
 
 exports.getOrders = async (req, res) => {
-    const email = req.params.email;
-    const order = await Order.find({email:email});
+    const email = req.params;
+    const order = await Order.find({name:email});
     res.json(order);
 }
 
