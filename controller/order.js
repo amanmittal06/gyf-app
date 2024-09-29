@@ -21,7 +21,7 @@ exports.getAllOrders = async (req,res) => {
 
 exports.getOrders = async (req, res) => {
     const email = req.params.name;
-    const order = await Order.find({name:email});
+    const order = await Order.find({name:email}).sort({ _id: -1 });
     res.json(order);
 }
 
