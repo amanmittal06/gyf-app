@@ -48,7 +48,7 @@ exports.paymentverification = async (req, res)=>{
     const newOrder = new Order(currOrder);
     newOrder.save()
      .then(() => {
-        res.redirect('https://www.gyf.org.in/store').json({
+        res.redirect('https://www.gyf.org.in/orders').json({
           orderSuccess:true,
         });
       })
