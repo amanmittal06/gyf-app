@@ -19,6 +19,7 @@ const orderSchema = new Schema({
   delivered: {type:Boolean, default:false},
   paymentId: {type: Number, default: undefined},
   paymentStatus: {type: String, default:'Due'},
+  openInputBox: {type: Boolean, default: false}
 });
 
 exports.Order  = mongoose.model('Order' , orderSchema);
