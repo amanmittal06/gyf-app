@@ -18,7 +18,7 @@ const orderSchema = new Schema({
   amount: Number,
   delivered: {type:Boolean, default:false},
   paymentID: {type: Number, default: undefined},
-  paymentStatus: {type: String, default:'due'},
+  paymentStatus: {type: String, default:'Due'},
 });
 
 exports.Order  = mongoose.model('Order' , orderSchema);
