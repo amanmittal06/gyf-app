@@ -16,7 +16,9 @@ const orderSchema = new Schema({
   name: String,
   items: [itemSchema],
   amount: Number,
-  delivered: {type:Boolean, default:false}
+  delivered: {type:Boolean, default:false},
+  paymentID: {type: Number, default: undefined},
+  paymentStatus: {type: String, default:'due'},
 });
 
 exports.Order  = mongoose.model('Order' , orderSchema);
