@@ -4,7 +4,7 @@ const {Schema} = mongoose
 const newsletterSchema = new Schema({
    volume: Number, 
    coverImage: String,
-   adress: String,
+   address: String,
    latest: {type: Boolean, default: false},
    description: {type: String, default: undefined}
 });
