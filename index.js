@@ -8,6 +8,7 @@ const userRouter = require('./routes/user')
 const orderRouter = require('./routes/order')
 const paymentRouter = require('./routes/payment')
 const storeUserRouter = require('./routes/storeuser')
+const newsletterRouter = require('./routes/newsletter')
 const razorpayInstance  = require('./razorpayinstance')
 require('dotenv').config().parsed;
 const cors = require('cors');
@@ -39,6 +40,7 @@ server.use('/products' , productRouter.router);
 server.use('/users' , userRouter.router);
 server.use('/orders' , orderRouter.router);
 server.use('/payments', paymentRouter.router);
+server.use('/newsletters', newsletterRouter.router);
 server.use('/storeusers', storeUserRouter.router)
 
 server.listen(process.env.PORT , ()=>{
