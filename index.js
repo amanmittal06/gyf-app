@@ -9,6 +9,7 @@ const orderRouter = require('./routes/order')
 const paymentRouter = require('./routes/payment')
 const storeUserRouter = require('./routes/storeuser')
 const newsletterRouter = require('./routes/newsletter')
+const chantingCountsRouter = require('./routes/chantingCounts')
 const razorpayInstance  = require('./razorpayinstance')
 require('dotenv').config().parsed;
 const cors = require('cors');
@@ -27,6 +28,11 @@ async function main() {
   }
 }
 
+const corsOptions = {
+  origin: ['http://localhost:5173', 'https://www.gyf.org.in', 'https://wwww.goudiyayouthforum.vercel.app'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  credentials: true, 
+};
 
 server.use(cors(corsOptions));
 server.options('*', cors(corsOptions));
@@ -38,6 +44,7 @@ server.use('/orders' , orderRouter.router);
 server.use('/payments', paymentRouter.router);
 server.use('/newsletters', newsletterRouter.router);
 server.use('/storeusers', storeUserRouter.router)
+server.use('/chantingCounts' , chantingCountsRouter.router);
 
 server.listen(process.env.PORT , ()=>{
     console.log('server started');
