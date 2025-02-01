@@ -29,7 +29,7 @@ async function main() {
 }
 
 const corsOptions = {
-  origin: ['http://localhost:5173', 'https://www.gyf.org.in', 'https://www.goudiyayouthforum.vercel.app', 'https://www.harinaamcounter.vercel.app'],
+  origin: ['http://localhost:5173', 'https://www.gyf.org.in', 'https://www.harinaamcounter.vercel.app','https://www.goudiyayouthforum.vercel.app'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   credentials: true, 
 };
