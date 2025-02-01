@@ -31,6 +31,7 @@ async function main() {
 const corsOptions = {
   origin: ['http://localhost:5173', 'https://www.gyf.org.in', 'https://www.harinaamcounter.vercel.app','https://www.goudiyayouthforum.vercel.app'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true, 
 };
 
