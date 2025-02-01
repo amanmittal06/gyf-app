@@ -18,7 +18,7 @@ exports.createData  = (req,res) =>{
 
 exports.getDataofAUser = async(req,res) =>{
     const user = req.params.username;
-    const datas = await Data.find({username:user}).sort({ startTime: 1 }).exec();
+    const datas = await Data.find({username:user});
     res.json(datas);
 
 }
