@@ -45,7 +45,7 @@ exports.paymentverification = async (req, res)=>{
   if (isAuthentic) {
     // Database comes here
 
-    currOrder = {...currOrder, paymentId:razorpay_payment_id}
+    currOrder = {...currOrder, paymentId:`${razorpay_payment_id}`}
 
     const newOrder = new Order(currOrder);
     newOrder.save()
