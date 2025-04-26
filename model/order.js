@@ -17,7 +17,7 @@ const orderSchema = new Schema({
   items: [itemSchema],
   amount: Number,
   delivered: {type:Boolean, default:false},
-  paymentId: {type: Number, default: undefined},
+  paymentId: {type: String, default: undefined},
   paymentStatus: {type: String, default:'Due'},
   openInputBox: {type: Boolean, default: false}
 });
