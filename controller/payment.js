@@ -57,7 +57,7 @@ exports.paymentverification = async (req, res)=>{
             paymentSuccess:true,
             orderSuccess:false,
         });
-        console.error(err);
+        console.log(err);
       });
     } 
     else 
