@@ -16,7 +16,7 @@ exports.createUser  = (req,res) =>{
 
 exports.getAllUsers = async (req,res) => {
 
-    const users = await User.find({});
+    const users = await User.find({}).sort({ _id: -1 });
     res.json(users);
 
 }
